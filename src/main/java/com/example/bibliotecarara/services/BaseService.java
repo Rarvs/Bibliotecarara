@@ -1,5 +1,8 @@
 package com.example.bibliotecarara.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.bibliotecarara.exceptions.CouldNotCreateEntityException;
@@ -7,9 +10,6 @@ import com.example.bibliotecarara.exceptions.CouldNotDeleteEntityException;
 import com.example.bibliotecarara.exceptions.CouldNotUpdateEntityException;
 import com.example.bibliotecarara.exceptions.NoEntityFoundException;
 import com.example.bibliotecarara.model.WithCopy;
-
-import java.util.List;
-import java.util.Optional;
 
 public abstract class BaseService<E extends WithCopy<E>> {
     JpaRepository<E, Long> repository;

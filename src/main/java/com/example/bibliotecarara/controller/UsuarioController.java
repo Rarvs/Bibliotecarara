@@ -1,21 +1,24 @@
 package com.example.bibliotecarara.controller;
 
-import com.example.bibliotecarara.exceptions.CouldNotCreateEntityException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.bibliotecarara.exceptions.CouldNotDeleteEntityException;
 import com.example.bibliotecarara.exceptions.CouldNotUpdateEntityException;
 import com.example.bibliotecarara.exceptions.NoEntityFoundException;
-import com.example.bibliotecarara.model.Livro;
 import com.example.bibliotecarara.model.Usuario;
-import com.example.bibliotecarara.repository.UsuarioRepository;
 import com.example.bibliotecarara.services.UsuarioService;
-import jakarta.websocket.server.PathParam;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
-import java.util.List;
-import java.util.Optional;
+import jakarta.websocket.server.PathParam;
 
 @RestController
 @RequestMapping("/poo/usuario")
@@ -49,17 +52,17 @@ public class UsuarioController {
     public ResponseEntity<Usuario> getUserByEmail(@PathParam("email") String email){
         try {
             return ResponseEntity.ok(service.findByEmail(email));
-        } catch (NoEntityFoundException e){
-            return ResponseEntity.noContent().build();
+        } catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     @PostMapping
     public ResponseEntity<Usuario> createUser(@RequestBody Usuario usuario){
         try {
-            return ResponseEntity.created(URI.create("")).body(service.createEntity(usuario));
-        } catch (CouldNotCreateEntityException e){
-            return ResponseEntity.badRequest().build();
+            return new ResponseEntity<>(service.createEntity(usuario), HttpStatus.CREATED);
+        } catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 

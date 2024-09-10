@@ -23,7 +23,7 @@ public class UsuarioService extends BaseService<Usuario>{
         this.repository = repository;
     }
 
-   public Usuario findByNome(String nome) throws NoEntityFoundException {
+   public Usuario findByNome(String nome) throws NoEntityFoundException { 
         Usuario usuario = repository.findFirstByNome(nome);
         if(usuario == null){
             throw new NoEntityFoundException();
@@ -147,5 +147,9 @@ public class UsuarioService extends BaseService<Usuario>{
 
     public Object listAll() {
         return repository.findAll();
+    }
+
+    public long count() {
+        return repository.count();
     }
 }

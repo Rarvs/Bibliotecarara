@@ -1,5 +1,9 @@
 package com.example.bibliotecarara.services;
 
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.example.bibliotecarara.exceptions.CouldNotCreateEntityException;
 import com.example.bibliotecarara.exceptions.CouldNotDeleteEntityException;
 import com.example.bibliotecarara.exceptions.CouldNotUpdateEntityException;
@@ -8,10 +12,6 @@ import com.example.bibliotecarara.model.Emprestimo;
 import com.example.bibliotecarara.model.Reserva;
 import com.example.bibliotecarara.model.Usuario;
 import com.example.bibliotecarara.repository.UsuarioRepository;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UsuarioService extends BaseService<Usuario>{
@@ -23,13 +23,13 @@ public class UsuarioService extends BaseService<Usuario>{
         this.repository = repository;
     }
 
-//    public Usuario findByNome(String nome) throws NoEntityFoundException {
-//        Usuario usuarios = repository.findFirstByNome(nome);
-//        if(usuarios.isEmpty()){
-//            throw new NoEntityFoundException();
-//        }
-//        return usuarios;
-//    }
+   public Usuario findByNome(String nome) throws NoEntityFoundException { 
+        Usuario usuario = repository.findFirstByNome(nome);
+        if(usuario == null){
+            throw new NoEntityFoundException();
+        }
+        return usuario;
+   }
 
     public Usuario findByRA(String ra) {
         Usuario usuario = repository.findFirstByRA(ra);
@@ -143,5 +143,13 @@ public class UsuarioService extends BaseService<Usuario>{
         } catch (Exception e){
             throw new CouldNotUpdateEntityException();
         }
+    }
+
+    public Object listAll() {
+        return repository.findAll();
+    }
+
+    public long count() {
+        return repository.count();
     }
 }

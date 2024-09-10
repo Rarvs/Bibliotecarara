@@ -1,5 +1,9 @@
 package com.example.bibliotecarara.services;
 
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.example.bibliotecarara.exceptions.CouldNotCreateEntityException;
 import com.example.bibliotecarara.exceptions.CouldNotDeleteEntityException;
 import com.example.bibliotecarara.exceptions.NoEntityFoundException;
@@ -7,9 +11,6 @@ import com.example.bibliotecarara.model.Livro;
 import com.example.bibliotecarara.model.Reserva;
 import com.example.bibliotecarara.model.Usuario;
 import com.example.bibliotecarara.repository.ReservaRepository;
-import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class ReservaService extends BaseService<Reserva>{
@@ -101,5 +102,9 @@ public class ReservaService extends BaseService<Reserva>{
         } catch (Exception e){
             throw new CouldNotDeleteEntityException();
         }
+    }
+
+    public Object listAll() {
+        return repository.findAll();
     }
 }

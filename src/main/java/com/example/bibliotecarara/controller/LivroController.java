@@ -2,8 +2,12 @@ package com.example.bibliotecarara.controller;
 
 import com.example.bibliotecarara.exceptions.CouldNotDeleteEntityException;
 import com.example.bibliotecarara.exceptions.NoEntityFoundException;
+import com.example.bibliotecarara.model.Livro;
 import com.example.bibliotecarara.services.LivroService;
 import jakarta.websocket.server.PathParam;
+
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

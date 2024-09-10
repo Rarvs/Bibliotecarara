@@ -4,6 +4,7 @@ import com.example.bibliotecarara.exceptions.CouldNotCreateEntityException;
 import com.example.bibliotecarara.exceptions.CouldNotDeleteEntityException;
 import com.example.bibliotecarara.exceptions.CouldNotUpdateEntityException;
 import com.example.bibliotecarara.exceptions.NoEntityFoundException;
+import com.example.bibliotecarara.model.Livro;
 import com.example.bibliotecarara.repository.LivroRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.example.biblioteca.repository;
+package com.example.bibliotecarara.repository;
 
 import com.example.bibliotecarara.model.Livro;
 import com.example.bibliotecarara.model.Reserva;

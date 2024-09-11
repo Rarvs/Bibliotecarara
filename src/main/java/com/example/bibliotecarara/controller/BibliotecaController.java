@@ -28,7 +28,7 @@ import com.example.bibliotecarara.model.Reserva;
 import com.example.bibliotecarara.services.BibliotecaService;
 
 @RestController
-@RequestMapping("/poo/biblioteca")
+@RequestMapping("/rara/biblioteca")
 public class BibliotecaController {
     private final BibliotecaService bibliotecaService;
 

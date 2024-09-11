@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/poo/livro")
+@RequestMapping("/rara/livro")
 public class LivroController {
 
     private final LivroService service;

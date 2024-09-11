@@ -33,19 +33,19 @@ public class UsuarioControllerTest {
         String usuarioJson2 = "{\"ra\":\"123457\",\"nome\":\"Usuário Teste\",\"email\":\"teste1@example.com\"}";
         String usuarioJson3 = "{\"ra\":\"123458\",\"nome\":\"Usuário Teste\",\"email\":\"teste2@example.com\"}";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/poo/usuario")
+        mockMvc.perform(MockMvcRequestBuilders.post("/rara/usuario")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(usuarioJson))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.content().json(usuarioJson));
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/poo/usuario")
+        mockMvc.perform(MockMvcRequestBuilders.post("/rara/usuario")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(usuarioJson2))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.content().json(usuarioJson2));
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/poo/usuario")
+        mockMvc.perform(MockMvcRequestBuilders.post("/rara/usuario")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(usuarioJson3))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
@@ -56,7 +56,7 @@ public class UsuarioControllerTest {
     @Test
     @Order(2)
     public void testConsultarUsuarioPorId() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/poo/usuario/1" ))
+        mockMvc.perform(MockMvcRequestBuilders.get("/rara/usuario/1" ))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.nome").exists());
     }
@@ -64,7 +64,7 @@ public class UsuarioControllerTest {
     @Test
     @Order(3)
     public void testConsultarUsuarioPorRA() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/poo/usuario/porRA")
+        mockMvc.perform(MockMvcRequestBuilders.get("/rara/usuario/porRA")
                         .param("ra", "123456"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.email").value("teste@example.com"));
@@ -73,7 +73,7 @@ public class UsuarioControllerTest {
     @Test
     @Order(4)
     public void testConsultarUsuarioPorEmail() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/poo/usuario/porEmail")
+        mockMvc.perform(MockMvcRequestBuilders.get("/rara/usuario/porEmail")
                         .param("email", "teste@example.com"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.email").value("teste@example.com"));
@@ -83,7 +83,7 @@ public class UsuarioControllerTest {
     @Order(5)
     public void testEditarUsuarioPorId() throws Exception {
         String usuarioJson = "{\"ra\":\"123456\",\"nome\":\"Usuário Editado\",\"email\":\"editado@example.com\"}";
-        mockMvc.perform(MockMvcRequestBuilders.put("/poo/usuario/1")
+        mockMvc.perform(MockMvcRequestBuilders.put("/rara/usuario/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(usuarioJson))
                 .andExpect(MockMvcResultMatchers.status().isAccepted())
@@ -94,7 +94,7 @@ public class UsuarioControllerTest {
     @Order(6)
     public void testEditarUsuarioPorRA() throws Exception {
         String usuarioJson = "{\"ra\":\"123456\",\"nome\":\"Usuário Reeditado\",\"email\":\"editado@example.com\"}";
-        mockMvc.perform(MockMvcRequestBuilders.put("/poo/usuario/porRA").param("ra","123456")
+        mockMvc.perform(MockMvcRequestBuilders.put("/rara/usuario/porRA").param("ra","123456")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(usuarioJson))
                 .andExpect(MockMvcResultMatchers.status().isAccepted())
@@ -105,7 +105,7 @@ public class UsuarioControllerTest {
     @Order(7)
     public void testEditarUsuarioPorEmail() throws Exception {
         String usuarioJson = "{\"ra\":\"123456\",\"nome\":\"Usuário Editado\",\"email\":\"editadonovamente@example.com\"}";
-        mockMvc.perform(MockMvcRequestBuilders.put("/poo/usuario/porEmail").param("email","editado@example.com")
+        mockMvc.perform(MockMvcRequestBuilders.put("/rara/usuario/porEmail").param("email","editado@example.com")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(usuarioJson))
                 .andExpect(MockMvcResultMatchers.status().isAccepted())
@@ -115,42 +115,42 @@ public class UsuarioControllerTest {
     @Test
     @Order(8)
     public void testRemoverUsuario() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/poo/usuario/1"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/rara/usuario/1"))
                 .andExpect(MockMvcResultMatchers.status().isAccepted());
     }
 
     @Test
     @Order(8)
     public void testRemoverUsuarioPorRA() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/poo/usuario/porRA").param("ra", "123457"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/rara/usuario/porRA").param("ra", "123457"))
                 .andExpect(MockMvcResultMatchers.status().isAccepted());
     }
 
     @Test
     @Order(8)
     public void testRemoverUsuarioPorEmail() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/poo/usuario/porEmail").param("email", "teste2@example.com"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/rara/usuario/porEmail").param("email", "teste2@example.com"))
                 .andExpect(MockMvcResultMatchers.status().isAccepted());
     }
 
     @Test
     @Order(9)
     public void testConsultarUsuarioPorId_failure() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/poo/usuario/1"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/rara/usuario/1"))
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
     }
 
     @Test
     @Order(10)
     public void testConsultarUsuarioPorEmail_failure() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/poo/usuario/porEmail").param("email", "no@example.com"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/rara/usuario/porEmail").param("email", "no@example.com"))
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
     }
 
     @Test
     @Order(11)
     public void testConsultarUsuarioPorRA_failure() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/poo/usuario/porEmail").param("ra", "00000"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/rara/usuario/porEmail").param("ra", "00000"))
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
     }
 
@@ -158,7 +158,7 @@ public class UsuarioControllerTest {
     @Order(12)
     public void testEditarUsuarioPorId_failure() throws Exception {
         String usuarioJson = "{\"ra\":\"123456\",\"nome\":\"Usuário Editado\",\"email\":\"editado@example.com\"}";
-        mockMvc.perform(MockMvcRequestBuilders.put("/poo/usuario/4")
+        mockMvc.perform(MockMvcRequestBuilders.put("/rara/usuario/4")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(usuarioJson))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
@@ -168,7 +168,7 @@ public class UsuarioControllerTest {
     @Order(13)
     public void testEditarUsuarioPorEmail_failure() throws Exception {
         String usuarioJson = "{\"ra\":\"123456\",\"nome\":\"Usuário Editado\",\"email\":\"editado@example.com\"}";
-        mockMvc.perform(MockMvcRequestBuilders.put("/poo/usuario/porEmail").param("email", "email@invalido.com")
+        mockMvc.perform(MockMvcRequestBuilders.put("/rara/usuario/porEmail").param("email", "email@invalido.com")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(usuarioJson))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
@@ -178,7 +178,7 @@ public class UsuarioControllerTest {
     @Order(14)
     public void testEditarUsuarioPorRA_failure() throws Exception {
         String usuarioJson = "{\"ra\":\"123456\",\"nome\":\"Usuário Editado\",\"email\":\"editado@example.com\"}";
-        mockMvc.perform(MockMvcRequestBuilders.put("/poo/usuario/porEmail").param("ra", "inexistente")
+        mockMvc.perform(MockMvcRequestBuilders.put("/rara/usuario/porEmail").param("ra", "inexistente")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(usuarioJson))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
@@ -187,14 +187,14 @@ public class UsuarioControllerTest {
     @Test
     @Order(15)
     public void testRemoverUsuarioPorRA_failure() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/poo/usuario/porRA").param("ra", "inexistente"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/rara/usuario/porRA").param("ra", "inexistente"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
     @Test
     @Order(16)
     public void testRemoverUsuarioPorEmail_failure() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/poo/usuario/porEmail").param("email", "email@invalido.com"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/rara/usuario/porEmail").param("email", "email@invalido.com"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 }

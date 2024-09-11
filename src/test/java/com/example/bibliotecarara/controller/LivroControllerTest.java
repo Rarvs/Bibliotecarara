@@ -26,13 +26,13 @@ public class LivroControllerTest {
         String livroJson = "{\"titulo\":\"Livro Teste\",\"autor\":\"Autor Teste\",\"anoPublicacao\":2023,\"disponivel\":true}";
         String livroJson2 = "{\"titulo\":\"Livro Teste 2\",\"autor\":\"Autor Teste 2\",\"anoPublicacao\":2023,\"disponivel\":true}";
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/poo/livro")
+        mockMvc.perform(MockMvcRequestBuilders.post("/rara/livro")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(livroJson))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.content().json(livroJson));
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/poo/livro")
+        mockMvc.perform(MockMvcRequestBuilders.post("/rara/livro")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(livroJson2))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
@@ -42,7 +42,7 @@ public class LivroControllerTest {
     @Test
     @Order(2)
     public void testConsultarLivroPorId() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/poo/livro/1"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/rara/livro/1"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.titulo").exists());
@@ -51,7 +51,7 @@ public class LivroControllerTest {
     @Test
     @Order(3)
     public void testConsultarLivroPorTitulo() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/poo/livro/porTitulo").param("titulo", "Livro Teste"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/rara/livro/porTitulo").param("titulo", "Livro Teste"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.titulo").exists());
@@ -62,7 +62,7 @@ public class LivroControllerTest {
     public void testEditarLivroPorId() throws Exception {
         String livroJson = "{\"titulo\":\"Livro Editado\",\"autor\":\"Autor Editado\",\"anoPublicacao\":2022,\"disponivel\":false}";
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/poo/livro/1")
+        mockMvc.perform(MockMvcRequestBuilders.put("/rara/livro/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(livroJson))
                 .andExpect(MockMvcResultMatchers.status().isAccepted())
@@ -74,7 +74,7 @@ public class LivroControllerTest {
     public void testEditarLivroPorTitulo() throws Exception {
         String livroJson = "{\"titulo\":\"Livro Reeditado\",\"autor\":\"Autor Editado\",\"anoPublicacao\":2022,\"disponivel\":false}";
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/poo/livro/porTitulo").param("titulo", "Livro Editado")
+        mockMvc.perform(MockMvcRequestBuilders.put("/rara/livro/porTitulo").param("titulo", "Livro Editado")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(livroJson))
                 .andExpect(MockMvcResultMatchers.status().isAccepted())
@@ -84,28 +84,28 @@ public class LivroControllerTest {
     @Test
     @Order(6)
     public void testExcluirLivro() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/poo/livro/1"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/rara/livro/1"))
                 .andExpect(MockMvcResultMatchers.status().isAccepted());
     }
 
     @Test
     @Order(7)
     public void testExcluirPorTitulo() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/poo/livro/porTitulo").param("titulo", "Livro Teste 2"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/rara/livro/porTitulo").param("titulo", "Livro Teste 2"))
                 .andExpect(MockMvcResultMatchers.status().isAccepted());
     }
 
     @Test
     @Order(8)
     public void testConsultarLivroPorId_failure() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/poo/livro/1"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/rara/livro/1"))
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
     }
 
     @Test
     @Order(9)
     public void testConsultarLivroPorTitulo_failure() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/poo/livro/porTitulo").param("titulo", "Livro Teste 2"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/rara/livro/porTitulo").param("titulo", "Livro Teste 2"))
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
     }
 
@@ -114,7 +114,7 @@ public class LivroControllerTest {
     public void testEditarLivroPorId_failure() throws Exception {
         String livroJson = "{\"titulo\":\"Livro Reeditado\",\"autor\":\"Autor Editado\",\"anoPublicacao\":2022,\"disponivel\":false}";
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/poo/livro/1")
+        mockMvc.perform(MockMvcRequestBuilders.put("/rara/livro/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(livroJson))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
@@ -125,7 +125,7 @@ public class LivroControllerTest {
     public void testEditarLivroPorTitulo_failure() throws Exception {
         String livroJson = "{\"titulo\":\"Livro Reeditado\",\"autor\":\"Autor Editado\",\"anoPublicacao\":2022,\"disponivel\":false}";
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/poo/livro/porTitulo").param("titulo", "Livro Editado")
+        mockMvc.perform(MockMvcRequestBuilders.put("/rara/livro/porTitulo").param("titulo", "Livro Editado")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(livroJson))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());

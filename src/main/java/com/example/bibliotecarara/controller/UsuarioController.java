@@ -21,7 +21,7 @@ import com.example.bibliotecarara.services.UsuarioService;
 import jakarta.websocket.server.PathParam;
 
 @RestController
-@RequestMapping("/poo/usuario")
+@RequestMapping("/rara/usuario")
 public class UsuarioController {
 
     private final UsuarioService service;

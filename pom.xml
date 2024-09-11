@@ -31,12 +31,12 @@
     </properties>
     <dependencies>
 
-  <!-- Dependência para o JavaFX -->
+  <!-- Dependência para o JavaFX
     <dependency>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-controls</artifactId>
         <version>17.0.2</version>
-    </dependency>
+    </dependency> -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -84,7 +84,7 @@
             </plugin>
 
                   <!-- Plugin Maven para JavaFX -->
-        <plugin>
+        <!-- <plugin>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-maven-plugin</artifactId>
             <version>0.0.8</version>
@@ -98,7 +98,7 @@
             <configuration>
                 <mainClass>com.example.bibliotecarara.BibliotecaGUI</mainClass>
             </configuration>
-        </plugin>
+        </plugin> -->
         </plugins>
     </build>
 

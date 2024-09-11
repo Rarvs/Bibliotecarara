@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import javafx.application.Application;
+//import javafx.application.Application;
 
 @SpringBootApplication
 public class BibliotecaRaraApplication {
@@ -13,9 +13,9 @@ public class BibliotecaRaraApplication {
         ApplicationContext context = SpringApplication.run(BibliotecaRaraApplication.class, args);
 
         // Set the Spring context in the JavaFX application
-        BibliotecaGUI.setApplicationContext(context);
+//        BibliotecaGUI.setApplicationContext(context);
 
         // Launch JavaFX application
-        Application.launch(BibliotecaGUI.class, args);
+//        Application.launch(BibliotecaGUI.class, args);
     }
 }
